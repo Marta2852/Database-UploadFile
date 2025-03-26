@@ -1,0 +1,94 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    background-color: #1a1a1a;
+    color: white;
+    text-align: center;
+}
+
+nav ul {
+    display: flex;
+    justify-content: center;
+    list-style-type: none;
+    margin: 20px 0;
+    padding: 0;
+}
+
+nav ul li {
+    margin: 0 15px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    padding: 10px 20px;
+    background-color: #f57c00;
+    color: white;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+nav ul li a:hover {
+    background-color: #e64a19;
+}
+
+section {
+    margin-top: 50px;
+}
+
+.input-group {
+    position: relative;
+    display: flex;
+    flex-direction: column; /* Make the label appear above the button */
+    align-items: center; /* Center everything horizontally */
+    margin-bottom: 30px;
+}
+
+/* Hidden File Input */
+input[type="file"] {
+    opacity: 0;
+    position: absolute;
+    z-index: 1;
+    width: 200px;
+    height: 40px;
+    cursor: pointer;
+}
+
+/* Label Styling */
+#fileLabel {
+    margin-bottom: 10px; /* Adds space between label and button */
+    padding: 10px 20px;
+    background-color: #333;
+    color: #ccc;
+    border-radius: 8px;
+    transition: background-color 0.3s;
+}
+
+input[type="file"]:hover + #fileLabel {
+    background-color: #444;
+}
+
+/* Upload Button with Breathing Effect */
+.breathing-button {
+    padding: 10px 30px;
+    font-size: 16px;
+    color: white;
+    background-color: #f57c00;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    animation: breathing 3s infinite;
+    margin-top: 10px;
+}
+
+@keyframes breathing {
+    0%, 100% {
+        transform: scale(1);
+        box-shadow: 0 0 5px #f57c00, 0 0 10px #e64a19;
+    }
+    50% {
+        transform: scale(1.1);
+        box-shadow: 0 0 15px #f57c00, 0 0 30px #e64a19;
+    }
+}
