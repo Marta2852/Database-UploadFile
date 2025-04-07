@@ -1,18 +1,13 @@
 <?php
-
 $host = "localhost";
-$dbname = "upload";
+$dbname = "project_md";
 $username = "root";
-$password = "root";
+$password = "";
 
-try{
-    $conn = new PDO("mysql:host=$host;dbname=$dbname;charset=utf8", $username, $password);
-
-    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-
-    echo "Datebase connected successfully!<br>";
+try {
+    $pdo = new PDO("mysql:host=$host;dbname=$dbname;charset=utf8", $username, $password);
+    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 } catch (PDOException $e) {
-
     die("Database connection failed: " . $e->getMessage());
-    
 }
+?>

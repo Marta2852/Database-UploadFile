@@ -3,49 +3,66 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>File Upload Project</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>Register & File Manager</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-
+    <!-- Navigation Menu -->
     <nav>
         <ul>
+            <li><a href="#" id="createUserBtn">Create User</a></li>
+            <li><a href="#" id="showUsersBtn">Show Users</a></li>
             <li><a href="#" id="uploadFileBtn">Upload File</a></li>
-            <li><a href="#" id="deleteFileBtn">Delete File</a></li>
+            <li><a href="#" id="viewFilesBtn">View Files</a></li>
         </ul>
     </nav>
 
-
-    <section id="uploadFileSection">
-        <h2>Upload File</h2>
-        <form id="fileUploadForm" action="upload.php" method="POST" enctype="multipart/form-data">
-            <div class="input-group">
-                <input type="file" id="fileInput" name="uploadedFile" required>
-                <label for="fileInput" id="fileLabel">No file selected</label>
-            </div>
-            <button type="submit" class="breathing-button">Upload</button>
+    <!-- Create User Form Section -->
+    <section id="createUserSection" style="display: block;">
+        <h2>Create User</h2>
+        <form id="userForm">
+            <input type="text" name="first_name" placeholder="First Name" required><br>
+            <input type="text" name="last_name" placeholder="Last Name" required><br>
+            <input type="text" name="phone" placeholder="Phone Number" required><br>
+            <input type="email" name="email" placeholder="Email" required><br>
+            <input type="date" name="date_of_birth" required><br> 
+            <input type="password" name="password" placeholder="Password" required><br>
+            <button type="submit">Sign Up</button>
         </form>
     </section>
 
-
-    <section id="deleteFileSection" style="display: none;">
-        <h2>Delete File</h2>
-        <p>Delete functionality coming soon...</p>
+    <!-- User List Section -->
+    <section id="userListSection" style="display: none;">
+        <h2>User List</h2>
+        <div id="usersTable">
+            <!-- User list will populate here -->
+        </div>
     </section>
 
+    <!-- Upload File Section -->
+    <section id="uploadFileSection" style="display: none;">
+        <h2>Upload File</h2>
+        <form id="uploadForm" action="uploadFile.php" method="POST" enctype="multipart/form-data">
+            <input type="file" name="file" required><br>
+            <button type="submit">Upload</button>
+        </form>
+    </section>
+
+    <!-- View Files Section -->
+    <section id="viewFilesSection" style="display: none;">
+        <h2>Uploaded Files</h2>
+        <div id="filesTable">
+            <!-- Files will be loaded here -->
+        </div>
+    </section>
+
+    <!-- Popup Modal -->
+    <div id="popup" style="display: none;">
+        <div class="message"></div>
+        <button onclick="closePopup()">OK</button>
+    </div>
+
     <script src="script.js"></script>
-    <script>
-        document.addEventListener("DOMContentLoaded", function () {
-            const urlParams = new URLSearchParams(window.location.search);
-            const successMessage = urlParams.get('successMessage');
-    
-            if (successMessage) {
-                alert(decodeURIComponent(successMessage));
-                history.replaceState(null, "", window.location.pathname);
-            }
-        });
-    </script>
-    
 </body>
 </html>
